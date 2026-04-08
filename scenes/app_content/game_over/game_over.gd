@@ -1,0 +1,31 @@
+extends Control
+
+@export var retry_button: Button
+@export var info_label: Label
+@export var tasks_complete_value_label: Label
+@export var duration_value_label: Label
+@export var accuracy_value_label: Label
+
+func _ready() -> void:
+  _set_data()
+  retry_button.pressed.connect(_retry)
+
+func _retry() -> void:
+  GameState.retry()
+
+func _set_data() -> void:
+  tasks_complete_value_label.text = "%d/%d" % [GameState.num_levels_complete, GameState.levels.size()]
+
+  duration_value_label.text = GameState.time_to_string(GameState.elapsed_time)
+  
+  var total_accuracy := 0.0
+  for level in GameState.levels:
+    total_accuracy += level.accuracy
+  total_accuracy /= GameState.levels.size()
+  accuracy_value_label.text = "%.1f%%" % total_accuracy
+  
+  # All tasks done
+  if GameState.num_levels_complete == GameState.levels.size():
+    info_label.text = "All tasks for today are finished.\nGreat job! :D"
+  else:
+    info_label.text = "Time to get some sleep, tasks can be finished tomorrow.\nGood effort! :)"

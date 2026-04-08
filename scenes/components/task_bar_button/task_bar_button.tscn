@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsc6jb7dq5an6"]
+
+[ext_resource type="Theme" uid="uid://6qhtgfqfkf5l" path="res://resources/theme.tres" id="1_d0x01"]
+[ext_resource type="Script" uid="uid://beho6vky08wbv" path="res://scenes/components/task_bar_button/task_bar_button.gd" id="3_cjajg"]
+
+[node name="TaskBarButton" type="Button"]
+custom_minimum_size = Vector2(110, 0)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.0
+offset_right = 24.0
+offset_bottom = 11.0
+grow_vertical = 2
+focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("1_d0x01")
+theme_type_variation = &"TaskBarButton"
+toggle_mode = true
+alignment = 0
+script = ExtResource("3_cjajg")
